@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+.estate__list {
+  display: flex;
+  flex-direction: row;
+  &__item {
+    width: 12em;
+    height: 13em;
+    margin: 0.25em;
+    &__image {
+      width: 100%;
+      height: auto;
+    }
+    &__name {
+      margin: 0;
+      text-align: left;
+      font-size: 1em;
+    }
+    &--clicked {
+      border: 0.75em lightblue solid;
+    }
+  }
+}
+
+.compare__estate {
+  width: 25em;
+  padding: 1em;
+  border: 0.125em solid grey;
+  &__table {
+    display: flex;
+    justify-content: space-between;
+    &__name {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    &__value {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+  }
+}
+
+.c {
+  display: flex;
+}
+
+.green {
+  background-color: rgb(65, 211, 65);
+}
+
+.red {
+  background-color: rgb(202, 93, 93);
+}
+
+.orange {
+  background-color: rgb(194, 136, 11);
+}
+.yo {
+  background-color: rgb(125, 200, 219);
+}
