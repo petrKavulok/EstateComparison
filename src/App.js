@@ -29,24 +29,50 @@ function App() {
 
   useEffect(() => { 
     if(selected.length === 2 && valuesTwo.length !== 0 ){
-      valuesOne.map((element, i) => {
-        console.log(`running ${i} time`)
-        if(valuesOne[i] > valuesTwo[i]){
-          const newColors = colors.concat(0)
-          const newColorsTwo = colorsTwo.concat(1)
-          return(setColors(newColors),
-          setColorsTwo(newColorsTwo))
+      const tmpColors = valuesOne.map((element, i) => {
+        if(i===0){
+        if(parseInt(valuesOne[i]) < parseInt(valuesTwo[i])){
+          return 'green';
+        } else if(parseInt(valuesOne[i]) < parseInt(valuesTwo[i])) {
+          return 'red';
         } else {
-          const newColors = colors.concat(1)
-          const newColorsTwo = colorsTwo.concat(0)
-          return(setColors(newColors),
-          setColorsTwo(newColorsTwo))
+          return '';
         }
-      })
-        console.log(colors)
-        console.log(colorsTwo)
+      }else {
+        if(parseInt(valuesOne[i]) > parseInt(valuesTwo[i])){
+          return 'green';
+        } else if(parseInt(valuesOne[i]) < parseInt(valuesTwo[i])) {
+          return 'red';
+        } else {
+          return '';
+        }}})
+
+        
+
+      const tmpColorsTwo = valuesTwo.map((element, i) => {
+        if(i===0){
+        if(parseInt(valuesOne[i]) < parseInt(valuesTwo[i])){
+          return 'red';
+        } else if(parseInt(valuesOne[i]) < parseInt(valuesTwo[i])) {
+          return 'green';
+        } else {
+          return '';
+        }
+      }else {
+        if(parseInt(valuesOne[i]) > parseInt(valuesTwo[i])){
+          return 'red';
+        } else if(parseInt(valuesOne[i]) < parseInt(valuesTwo[i])) {
+          return 'green';
+        } else {
+          return '';
+        }}})
+      
+
+      console.log(tmpColors);
+      setColors(tmpColors);
+      setColorsTwo(tmpColorsTwo);
     }
-  },[selected, valuesTwo])
+  },[selected, valuesOne, valuesTwo])
 
 
   useEffect(()=> {
@@ -65,7 +91,7 @@ function App() {
     
       {estates ? <EstateList estates={estates} setSelected={setSelected} selected={selected}/> : <p>loading data</p> }
 
-      {!selected ?  <p>select estates to compare</p> : 
+      {selected.length === 0 ?  <p>select estates to compare</p> : 
         <span>
           <div className="c">
             {selected.map((element, i) => <Detail data={estates[element]} values={ i===0 ? valuesOne :  valuesTwo}  setValues={i===0 ? setValuesOne : setValuesTwo} colors={ i===0 ? colors :  colorsTwo}/>)}

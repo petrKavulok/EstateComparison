@@ -13,25 +13,26 @@ export default function EstateList(props)
     const [class2, setClass2] = useState('yo');
 
     useEffect(()=> {
-        if(props.colors[0] === 1){
+        if(props.colors[0] === 'green'){
             setClass0('green');
-        } else if (props.colors[0] === 0){
+        } else if (props.colors[0] === 'red'){
             setClass0('red');
         }  else {setClass0('orange')}
 
 
-        if(props.colors[1] === 1){
+        if(props.colors[1] === 'green'){
             setClass1('green');
-        } else if (props.colors[1] === 0){
+        } else if (props.colors[1] === 'red'){
             setClass1('red');
         }  else {setClass1('orange')}
 
-        if(props.colors[2] === 1){
+        if(props.colors[2] === 'green'){
             setClass2('green');
-        } else if (props.colors[2] === 0){
+        } else if (props.colors[2] === 'red'){
             setClass2('red');
         }  else {setClass2('orange')}
-
+console.log('here')
+console.log('here')
     },)
 
 
